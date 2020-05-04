@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    #要使用的连接池实现的全称
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      #JDBC驱动程序的全称。默认情况下根据URL自动检测
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      #mysql数据库用的是GBK编码,而项目数据库用的是utf-8编码.这时候如果添加了useUnicode=true&characterEncoding=UTF-8，那么作用有如下两个方面：
+      #存储数据时 数据库在存放项目数据的时候会先用UTF-8格式将数据解码成字节码，然后再将解码后的字节码重新使用GBK编码存放到数据库中。
+      #获取数据时 在从数据库中取数据的时候，数据库会先将数据库中的数据按GBK格式解码成字节码，然后再将解码后的字节码重新按UTF-8格式编码数据，最后再将数据返回给客户端。
+      #serverTimezone=Asia/Shanghai 解决时差
+      #useSSL=true就是使用JDBC跟你的数据库连接的时候，你的JDBC版本与MySQL版本不兼容，MySQL的版本更高一些，在连接语句后加上“useSSL=‘true’” ，就可以连接到数据库了
+      url: jdbc:mysql://localhost:3306/graduation_work?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+      max-active: 100
+      min-idle: 1
+      max-wait: 60000
+      #检测是否为有效连接
+      test-on-borrow: true
+      test-on-return: true
+mybatis:
+  mapper-locations: classpath*:com/hjn123/mapper/*Mapper.xml
+  config-location: classpath:mybatis-config.xml

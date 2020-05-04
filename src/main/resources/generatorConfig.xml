@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--指定数据库驱动jar包位置,mysql驱动包-->
+    <classPathEntry location="C:\Users\le\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar"/>
+    <!--id:自定义-->
+    <context id="context" targetRuntime="MyBatis3Simple">
+        <!--禁用注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="false"/>
+        </commentGenerator>
+        <!--连接数据库,useSSL=false解决jdbd与mysql版本兼容问题-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/graduation_work?serverTimezone=GMT%2B8&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+                        userId="root" password="123456"/>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--生成entity类-->
+        <javaModelGenerator targetPackage="com.hjn123.myandroidcodeback.pojo" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--sql映射文件-->
+        <sqlMapGenerator targetPackage="com.hjn123.mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <!--dao接口-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.hjn123.myandroidcodeback.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+        <!--table配置,指定数据库中t_user表生成对应的User实体类-->
+        <table tableName="comment" domainObjectName="Comment" enableCountByExample="false" enableDeleteByExample="false"
+        enableSelectByExample="false" enableUpdateByExample="false"/>
+       <!-- <table tableName="consumer_ord" domainObjectName="Consumer" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>-->
+        <table tableName="courier" domainObjectName="Courier" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="courier_rent_box" domainObjectName="RentBox" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="courier_send_express" domainObjectName="CourierSendToBox" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="express_box" domainObjectName="ExpressBox" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="express_cabinet" domainObjectName="ExpressCabinet" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="express_company" domainObjectName="ExpressCompany" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="express_send_order" domainObjectName="ConsumerSendToBox" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
+        <table tableName="send_express" domainObjectName="SendExpressDetail" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
+    </context>
+</generatorConfiguration>
